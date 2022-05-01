@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 
 static FILE* fp;
 static FILE* out;
@@ -46,14 +47,10 @@ int main (int argc, char* argv[]) {
    }
 
    char* ch = calloc(256, sizeof(char));
-   int temp;
-   while (fgets(ch, 256, fp)) {
-      temp = fgetc(fp);
-      if (temp == '#') {
-         continue;
+   while (fgets(ch, 256, fp) != NULL) {
+      if(strstr(ch, "add") || strstr(ch, "nor") || strstr(ch, "and")) {
+         fprintf(out, "%s", ch);
       }
-      else {
-         fprintf(out, "%s", ch); } 
    }
    free(ch);
    fclose(fp);
