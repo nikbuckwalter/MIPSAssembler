@@ -37,7 +37,7 @@ int main (int argc, char argv[]) {
    out = fopen(argv[2], "w");
 
    if (fp == NULL || out == NULL) {
-      printf("file can't be opened \n");
+      printf("No \n");
    }
 
    char* ch = calloc(256, sizeof(char));
