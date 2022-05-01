@@ -33,21 +33,22 @@ char *DecToBin(int num)
 }
 
 int main (int argc, char *argv[]) {
-    fp = fopen(argv[1], "r");
-    out = fopen(argv[2], "w");
+   fp = fopen(argv[1], "r");
+   out = fopen(argv[2], "w");
 
-    if (fp == NULL || out == NULL) {
-        printf("file can't be opened \n");
-    }
+   if (fp == NULL || out == NULL) {
+      printf("file can't be opened \n");
+   }
 
-    char ch = fgetc(fp);
+   char ch = calloc(256, sizeof(char));
+   ch = fgetc(fp);
 
-    while (ch != EOF) {
-        ch = fgetc(fp);
-        printf("%c", ch);
-    }
+   while (ch != EOF) {
+      ch = fgetc(fp);
+      printf("%c", ch);
+   }
 
-    fclose(fp);
+   fclose(fp);
 }
 
 
