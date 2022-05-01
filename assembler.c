@@ -6,6 +6,8 @@
 static FILE* fp;
 static FILE* out;
 
+void printRegR(char* instruction, FILE* output);
+
 /**
  * @brief Takes an integer and converts to binary
  * 
@@ -49,7 +51,13 @@ int main (int argc, char* argv[]) {
    char* ch = calloc(256, sizeof(char));
    while (fgets(ch, 256, fp) != NULL) {
       if(strstr(ch, "add") || strstr(ch, "nor") || strstr(ch, "and")) {
-         fprintf(out, "%s", ch);
+
+         if (strstr(ch, "#")) {
+            continue;
+         }
+         else {
+            printRegR(ch, out);
+         }
       }
    }
    free(ch);
