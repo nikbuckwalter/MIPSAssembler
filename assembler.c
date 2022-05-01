@@ -32,7 +32,7 @@ char *DecToBin(int num)
    return binary;
 }
 
-int main (int argc, char *argv[]) {
+int main (int argc, char argv[]) {
    fp = fopen(argv[1], "r");
    out = fopen(argv[2], "w");
 
@@ -40,9 +40,9 @@ int main (int argc, char *argv[]) {
       printf("file can't be opened \n");
    }
 
-   char ch = calloc(256, sizeof(char));
-   fgets(ch, 256, fp);
-   fprintf(out, "%c", ch);
+   char* ch = calloc(256, sizeof(char));
+   fgets(ch, 255, fp);
+   fprintf(out, "%c", *ch);
    free(ch);
    fclose(fp);
 }
