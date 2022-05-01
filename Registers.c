@@ -1,5 +1,6 @@
 #include <inttypes.h>
 #include <stddef.h>
+#include <string.h>
 
 // Structure for Mnemonics names, their functs, and opcodes
 struct _Mnem
