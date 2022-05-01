@@ -42,12 +42,7 @@ int main (int argc, char *argv[]) {
 
    char ch = calloc(256, sizeof(char));
    ch = fgetc(fp);
-
-   while (ch != EOF) {
-      ch = fgetc(fp);
-      printf("%c", ch);
-   }
-
+   printf("%c", ch);
    fclose(fp);
 }
 
