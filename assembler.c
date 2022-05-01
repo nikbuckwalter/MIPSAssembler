@@ -41,8 +41,8 @@ int main (int argc, char *argv[]) {
    }
 
    char ch = calloc(256, sizeof(char));
-   ch = fgetc(fp);
-   printf("%c", ch);
+   fgets(ch, 256, fp);
+   fprintf(out, "%c", ch);
    fclose(fp);
 }
 
