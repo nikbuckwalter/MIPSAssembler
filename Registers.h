@@ -30,18 +30,7 @@ static Mnem MnemTable[7] = {
  * @param str is the mnemonic name parameter
  * @return char* is the mnemonic's funct
  */
-char *getMnemOp(const char *str)
-{
-   for (int i = 0; i < 7; i++)          // loops the amount of Mnemonics
-   { 
-      if (strcmp(str, MnemTable[i].mnemName) == 0)
-      {                                 // determines if param is equal to any of the Mnemonics
-         return MnemTable[i].mnemOp; // returns bin if register is found
-      }
-   }
-
-   return NULL;
-}
+char *getMnemOp(const char *str);
 
 /**
  * @brief Gets the funct of the mnemonic from the lookup table
@@ -49,18 +38,7 @@ char *getMnemOp(const char *str)
  * @param str is the mnemonic name parameter
  * @return char* is the mnemonic's funct
  */
-char *getMnemShamt(const char *str)
-{
-   for (int i = 0; i < 7; i++)          // loops the amount of Mnemonics
-   { 
-      if (strcmp(str, MnemTable[i].mnemName) == 0)
-      {                                 // determines if param is equal to any of the Mnemonics
-         return MnemTable[i].mnemShamt; // returns bin if register is found
-      }
-   }
-
-   return NULL;
-}
+char *getMnemShamt(const char *str);
 
 /**
  * @brief Gets the funct of the mnemonic from the lookup table
@@ -68,18 +46,7 @@ char *getMnemShamt(const char *str)
  * @param str is the mnemonic name parameter
  * @return char* is the mnemonic's funct
  */
-char *getMnemFunc(const char *str)
-{
-   for (int i = 0; i < 7; i++)          // loops the amount of Mnemonics
-   { 
-      if (strcmp(str, MnemTable[i].mnemName) == 0)
-      {                                 // determines if param is equal to any of the Mnemonics
-         return MnemTable[i].mnemFunc; // returns bin if register is found
-      }
-   }
-
-   return NULL;
-}
+char *getMnemFunc(const char *str);
 
 // Structure for Register names, their binary, and decimals
 struct _Reg
@@ -111,16 +78,4 @@ static Reg RegTable[11] = {
  * @param str is the register name parameter
  * @return char* is the binary number of the register
  */
-char *getRegBin(const char *str)
-{
-   for (int i = 0; i < 8; i++)
-   {
-      if (strcmp(str, RegTable[i].regName) == 0)
-      {
-         return RegTable[i].regCode;
-      }
-   }
-
-   return NULL;
-}
-
+char *getRegBin(const char *str);
