@@ -10,6 +10,7 @@ static FILE* out2;
  
 void printRegR(char* instruction, FILE* output);
 void printRImm(char* instruction, FILE* output);
+void printAnd(char* instruction, FILE* output);
  
 /**
  * @brief Takes an integer and converts to binary
@@ -60,6 +61,15 @@ int main (int argc, char* argv[]) {
          }
          else {
             printRegR(ch, out);
+         }
+      }
+
+      if(strstr(ch, "and")) {
+         if (strstr(ch, "#")) {
+            continue;
+         }
+         else {
+            printAnd(ch, out);
          }
       }
 

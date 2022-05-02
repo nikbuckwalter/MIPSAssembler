@@ -134,27 +134,64 @@ char *getRegBin(const char *str)
 void printRegR(char* instruction, FILE* output) {
    char copy[100];
    strcpy(copy, instruction);
+   
    char* temp = strtok(copy, " ");
    char* op = getMnemOp(temp);
    fprintf(output, "%s", op);
 
    char* reg1 = strtok(NULL, ", ");
    char* rd = getRegBin(reg1);
-   fprintf(output, "%s", rd);
 
    char* reg2 = strtok(NULL, ", ");
    char* rs = getRegBin(reg2);
-   fprintf(output, "%s", rs);
 
    char* reg3 = strtok(NULL, " \n\t");
    char* rt = getRegBin(reg3);
+
+   fprintf(output, "%s", rs);
    fprintf(output, "%s", rt);
+   fprintf(output, "%s", rd);
 
    char* shamt = getMnemShamt(temp);
    fprintf(output, "%s", shamt);
    char* func = getMnemFunc(temp);
    fprintf(output, "%s\n", func);
 }  
+
+/**
+ * @brief Prints an r type instruction without the immediate
+ * 
+ * @param instruction is the char version of the instruction
+ * @param output is the file that the print statement points
+ */
+void printAnd(char* instruction, FILE* output) {
+   char copy[100];
+   strcpy(copy, instruction);
+   
+   char* temp = strtok(copy, " \t");
+   char* op = getMnemOp(temp);
+   fprintf(output, "%s", op);
+
+   char* reg1 = strtok(NULL, ", ");
+   char* rd = getRegBin(reg1);
+
+   char* reg2 = strtok(NULL, ", ");
+   char* rs = getRegBin(reg2);
+
+   char* reg3 = strtok(NULL, " \n\t");
+   char* rt = getRegBin(reg3);
+
+   fprintf(output, "%s", rs);
+   fprintf(output, "%s", rt);
+   fprintf(output, "%s", rd);
+
+   char* shamt = getMnemShamt(temp);
+   fprintf(output, "%s", shamt);
+   char* func = getMnemFunc(temp);
+   fprintf(output, "%s\n", func);
+}  
+
+
 
 void printRImm(char* instruction, FILE* output) {
    fprintf(output, "%s", instruction);
