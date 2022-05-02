@@ -52,7 +52,7 @@ int main (int argc, char* argv[]) {
  
    char* ch = calloc(256, sizeof(char));
    while (fgets(ch, 256, fp) != NULL) {
-      if(strstr(ch, "add") || strstr(ch, "nor") || strstr(ch, "and")) {
+      if(strstr(ch, "add") || strstr(ch, "nor")) {
  
          if (strstr(ch, "#")) {
             continue;
@@ -80,14 +80,11 @@ int main (int argc, char* argv[]) {
       {
          fclose(fp2);
       }
-      else if(strstr(ch, ".data") || strstr(ch, "#"))
-      {
-         continue;
-      }
-      else
+      else if(strstr(ch, ".word"))
       {
          printRegR(ch, out2);
       }
+
    }
    free(ch);
    fclose(fp2);
