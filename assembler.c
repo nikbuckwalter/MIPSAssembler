@@ -4,6 +4,7 @@
 #include <string.h>
 
 static FILE* fp;
+static FILE* fp2;
 static FILE* out;
 
 void printRegR(char* instruction, FILE* output);
@@ -42,6 +43,9 @@ int main (int argc, char* argv[]) {
    if (fp != NULL) {
       out = fopen(argv[2], "w");
    }
+
+   fp2 = fopen("output2.txt", "w");
+   
 
    if (fp == NULL || out == NULL) {
       printf("file can't be opened \n");
