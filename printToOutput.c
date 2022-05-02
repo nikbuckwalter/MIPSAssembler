@@ -4,6 +4,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * @brief Takes an integer and converts to binary
+ *
+ * @param num is the number in decimal form
+ * @return char* is the parameter number in decimal
+ **/
+ 
+char *charDecToBin(int num)
+{
+   char* binary = calloc(16, sizeof(char ));
+   int x, y;
+   for (x = 15; x >= 0; x--)
+   {
+      y = num >> x;
+      if (y & 1)
+      {
+         binary[15 - x] = '1';
+      }
+ 
+      else
+      {
+         binary[15 - x] = '0';
+      }
+   }
+ 
+   return binary;
+}
+
 // Structure for Mnemonics names, their functs, and opcodes
 struct _Mnem
 {
@@ -194,17 +222,25 @@ void printAnd(char* instruction, FILE* output) {
 
 
 void printRImm(char* instruction, FILE* output) {
-   fprintf(output, "%s", instruction);
+   char copy[100];
+   strcpy(copy, instruction);
+   
+   char* temp = strtok(copy, " ");
+   char* op = getMnemOp(temp);
+   fprintf(output, "%s", op);
 
-   /**
    char* reg1 = strtok(NULL, ", ");
    char* rt = getRegBin(reg1);
-   fprintf(output, "%s", rt);
+
    char* reg2 = strtok(NULL, ", ");
    char* rs = getRegBin(reg2);
-   fprintf(output, "%s", rs);
-   **/
 
+   fprintf(output, "%s", rs);
+   fprintf(output, "%s", rt);
+
+   char* imm = strtok(NULL, " \n\t");
+   char* imme = charDecToBin( atoi(imm));
+   fprintf(output, "%s\n", imme); 
 
 }
 
