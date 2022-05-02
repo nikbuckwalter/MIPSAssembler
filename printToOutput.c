@@ -17,11 +17,11 @@ typedef struct _Mnem Mnem;
 
 static Mnem MnemTable[7] = {
     {"add", "000000", "00000", "100000"},
-    {"addi", NULL, NULL, "001000"},
+    {"addi", "001000", NULL, NULL},
     {"and", "000000", "00000", "100100"},
-    {"andi", NULL, NULL, "001100"},
+    {"andi", "001100", NULL, NULL},
     {"nor", "000000", "00000", "100111"},
-    {"slti", NULL, NULL, "001010"},
+    {"slti", "001010", NULL, NULL},
     {"syscall", "000000", NULL, "001100"}
 };
 
@@ -93,17 +93,17 @@ typedef struct _Reg Reg;
 
 // Register table
 static Reg RegTable[11] = {
-   { "v0", "00010" },
-	{ "v1", "00011" },
-   { "s0", "10000" },
-	{ "s1", "10001" },
-	{ "s2", "10010" },
-	{ "s3", "10011" },
-	{ "s4", "10100" },
-	{ "s5", "10101" },
-	{ "s6", "10110" },
-	{ "s7", "10111" },
-    { NULL, 0}
+   { "$v0", "00010" },
+	{ "$v1", "00011" },
+   { "$s0", "10000" },
+	{ "$s1", "10001" },
+	{ "$s2", "10010" },
+	{ "$s3", "10011" },
+	{ "$s4", "10100" },
+	{ "$s5", "10101" },
+	{ "$s6", "10110" },
+	{ "$s7", "10111" },
+   { NULL, 0}
 };
 
 /**
@@ -114,7 +114,7 @@ static Reg RegTable[11] = {
  */
 char *getRegBin(const char *str)
 {
-   for (int i = 0; i < 8; i++)
+   for (int i = 0; i < 11; i++)
    {
       if (strcmp(str, RegTable[i].regName) == 0)
       {
@@ -133,22 +133,23 @@ char *getRegBin(const char *str)
  */
 void printRegR(char* instruction, FILE* output) {
    char copy[100];
-   char* reg1 = NULL;
-   char* reg2 = NULL;
-   char* reg3 = NULL;
    strcpy(copy, instruction);
    char* temp = strtok(copy, " ");
-   
    char* op = getMnemOp(temp);
    fprintf(output, "%s", op);
 
-   reg1 = strtok(NULL, ", ");
-   reg2 = strtok(NULL, ", ");
-   reg3 = strtok(NULL, ", ");
+   char* reg1 = strtok(NULL, ", ");
+   char* rd = getRegBin(reg1);
+   fprintf(output, "%s", rd);
 
-   fprintf(output, "%s", reg1);
-   fprintf(output, "%s", reg2);
-   fprintf(output, "%s", reg3);
+   char* reg2 = strtok(NULL, ", ");
+   char* rs = getRegBin(reg2);
+   fprintf(output, "%s", rs);
+   /**
+   char* reg3 = strtok(NULL, "\n");
+   char* rt = getRegBin(reg3);
+   fprintf(output, "%s", rt);
+   **/
 
    char* shamt = getMnemShamt(temp);
    fprintf(output, "%s", shamt);
