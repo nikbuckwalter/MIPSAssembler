@@ -163,7 +163,6 @@ void printRImm(char* instruction, FILE* output) {
    char* reg1 = strtok(NULL, ", ");
    char* rt = getRegBin(reg1);
    fprintf(output, "%s", rt);
-
    char* reg2 = strtok(NULL, ", ");
    char* rs = getRegBin(reg2);
    fprintf(output, "%s", rs);
@@ -171,4 +170,5 @@ void printRImm(char* instruction, FILE* output) {
 
 
 }
+
 
