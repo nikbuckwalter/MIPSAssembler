@@ -78,6 +78,15 @@ int main (int argc, char* argv[]) {
          }
       }
 
+      if (strstr(ch, "syscall")) {
+         if(strstr(ch, "#")) {
+            continue;
+         }
+         else {
+            fprintf(out, "%s", "00000000000000000000000000001100");
+         }
+      }
+
    }
    free(ch);
    fclose(fp);
