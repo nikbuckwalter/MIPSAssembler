@@ -146,12 +146,9 @@ void printRegR(char* instruction, FILE* output) {
    char* rs = getRegBin(reg2);
    fprintf(output, "%s", rs);
 
-   /**
-   char* reg3 = strtok(NULL, " ");
-   reg3 = shorten(reg3);
+   char* reg3 = strtok(NULL, " \n\t");
    char* rt = getRegBin(reg3);
    fprintf(output, "%s", rt);
-   **/
 
    char* shamt = getMnemShamt(temp);
    fprintf(output, "%s", shamt);
@@ -166,7 +163,6 @@ void printRImm(char* instruction, FILE* output) {
    char* reg1 = strtok(NULL, ", ");
    char* rt = getRegBin(reg1);
    fprintf(output, "%s", rt);
-
    char* reg2 = strtok(NULL, ", ");
    char* rs = getRegBin(reg2);
    fprintf(output, "%s", rs);
@@ -174,4 +170,5 @@ void printRImm(char* instruction, FILE* output) {
 
 
 }
+
 
