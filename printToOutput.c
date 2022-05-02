@@ -125,15 +125,27 @@ char *getRegBin(const char *str)
    return NULL;
 }
 
-
-
+/**
+ * @brief Prints an r type instruction without the immediate
+ * 
+ * @param instruction is the char version of the instruction
+ * @param output is the file that the print statement points
+ */
 void printRegR(char* instruction, FILE* output) {
-    const char* mnemonic = strtok(instruction, " ");
-    char* Op = getMnemOp(mnemonic);
-    fprintf(output, "%s", Op);
-    char* Shamt = getMnemShamt(mnemonic);
-    fprintf(output, "%s", Shamt);
-    char* Funct = getMnemFunc(mnemonic);
-    fprintf(output, "%s", Funct);
+   char copy[100];
+   char* reg1 = NULL;
+   char* reg2 = NULL;
+   char* reg3 = NULL;
+   strcpy(copy, instruction);
+   char* temp = strtok(copy, " ");
+   
+   char* op = getMnemOp(temp);
+   fprintf(output, "%s", op);
+   char* shamt = getMnemShamt(temp);
+   fprintf(output, "%s", shamt);
+   char* func = getMnemFunc(temp);
+   fprintf(output, "%s\n", func);
+   temp = strtok(NULL, ", ");
+   fprintf(output, "%s", temp);
 }  
 
