@@ -9,6 +9,7 @@ static FILE* out;
 static FILE* out2;
  
 void printRegR(char* instruction, FILE* output);
+void printRImm(char* instruction, FILE* output);
  
 /**
  * @brief Takes an integer and converts to binary
@@ -61,6 +62,7 @@ int main (int argc, char* argv[]) {
             printRegR(ch, out);
          }
       }
+
    }
    free(ch);
    fclose(fp);
