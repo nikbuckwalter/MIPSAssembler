@@ -141,11 +141,18 @@ void printRegR(char* instruction, FILE* output) {
    
    char* op = getMnemOp(temp);
    fprintf(output, "%s", op);
+
+   reg1 = strtok(NULL, ", ");
+   reg2 = strtok(NULL, ", ");
+   reg3 = strtok(NULL, ", ");
+
+   fprintf(output, "%s", reg1);
+   fprintf(output, "%s", reg2);
+   fprintf(output, "%s", reg3);
+
    char* shamt = getMnemShamt(temp);
    fprintf(output, "%s", shamt);
    char* func = getMnemFunc(temp);
    fprintf(output, "%s\n", func);
-   temp = strtok(NULL, ", ");
-   fprintf(output, "%s", temp);
 }  
 
